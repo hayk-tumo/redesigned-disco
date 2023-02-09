@@ -1,0 +1,38 @@
+@import 'https://rsms.me/inter/inter.css';
+@import './reset.css';
+@import './info.css';
+@import './game.css';
+
+:root {
+  /* Colours from Primer Prism default coloyr scheme */
+  --grey-50: #f6f8fa;
+  --grey-200: #d0d7de;
+  --grey-700: #424a53;
+  --grey-900: #24292f;
+
+  --bg: var(--grey-50);
+  --border: var(--grey-200);
+  --text: var(--grey-700);
+  --text-accent: var(--grey-900);
+}
+
+body {
+  padding: 2em;
+
+  overflow: hidden auto;
+
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--grey-900);
+    --border: var(--grey-700);
+    --text: var(--grey-200);
+    --text-accent: var(--grey-50);
+  }
+}

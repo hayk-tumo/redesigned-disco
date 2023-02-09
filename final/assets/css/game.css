@@ -1,0 +1,43 @@
+.game {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 2em;
+
+  place-content: center;
+
+  margin: 0 auto 2em;
+  width: max-content;
+}
+
+.game__canvas {
+  grid-row-start: span 5;
+
+  display: flex;
+  align-items: center;
+
+  height: 850px;
+}
+
+.p5Canvas {
+  border: 3px solid var(--border);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border: 3px solid var(--border);
+  padding: 2em;
+  min-width: 220px;
+}
+
+.stat__title {
+  font-size: 1.1rem;
+}
+
+.stat__value {
+  font-weight: 700;
+  line-height: 1;
+  font-size: 2rem;
+}

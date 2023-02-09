@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <title>Game of Life</title>
+</head>
+<body>
+  <!-- Game space -->
+  <div class="game">
+    <div class="game__canvas" id="canvas-wrapper"></div>
+    <div class="stat">
+      <p class="stat__title">Grass</p>
+      <p id="grass" class="stat__value">0</p>
+    </div>
+    <div class="stat">
+      <p class="stat__title">Herbivores</p>
+      <p id="herbivores" class="stat__value">0</p>
+    </div>
+    <div class="stat">
+      <p class="stat__title">Wild Animals</p>
+      <p id="wild-animals" class="stat__value">0</p>
+    </div>
+    <div class="stat">
+      <p class="stat__title">Bombs</p>
+      <p id="bombs" class="stat__value">0</p>
+    </div>
+    <div class="stat">
+      <p class="stat__title">Viruses</p>
+      <p id="viruses" class="stat__value">0</p>
+    </div>
+  </div>
+
+  <!-- Info table -->
+  <table class="info">
+    <thead class="info__head">
+      <tr class="info__head-row">
+        <th class="info__head-cell info__colour"><!-- Colour --></th>
+        <th class="info__head-cell">Type</th>
+        <th class="info__head-cell">Initial Energy</th>
+        <th class="info__head-cell">Reproduction</th>
+        <th class="info__head-cell">Death</th>
+        <th class="info__head-cell">Special</th>
+      </tr>
+    </thead>
+    <tbody class="info__body">
+      <tr class="info__row">
+        <td class="info__cell info__colour" style="--colour: #eaeef2"></td>
+        <td class="info__cell">Empty Cell</td>
+        <td class="info__cell">-</td>
+        <td class="info__cell">-</td>
+        <td class="info__cell">-</td>
+        <td class="info__cell">-</td>
+      </tr>
+      <tr class="info__row">
+        <td class="info__cell info__colour" style="--colour: #2da44e"></td>
+        <td class="info__cell">Grass</td>
+        <td class="info__cell">-</td>
+        <td class="info__cell">Every frame in a random surrounding cell.</td>
+        <td class="info__cell">Can be eaten by herbivores.</td>
+        <td class="info__cell">Has 0.5% chance of being poisonous.</td>
+      </tr>
+      <tr class="info__row">
+        <td class="info__cell info__colour" style="--colour: #eac54f"></td>
+        <td class="info__cell">Herbivore</td>
+        <td class="info__cell">7</td>
+        <td class="info__cell">After eating 5 grass cells.</td>
+        <td class="info__cell">After being hungry for 5 days.</td>
+        <td class="info__cell">Gains energy by eating grass. When immune to viruses, it looks darker.</td>
+      </tr>
+      <tr class="info__row">
+        <td class="info__cell info__colour" style="--colour: #fa4549"></td>
+        <td class="info__cell">Wild Animal</td>
+        <td class="info__cell">7</td>
+        <td class="info__cell">After eating 5 herbivore cells.</td>
+        <td class="info__cell">After being hungry for 2 days.</td>
+        <td class="info__cell">Gains energy by eating herbivores. When immune to viruses, it looks darker.</td>
+      </tr>
+      <tr class="info__row">
+        <td class="info__cell info__colour" style="--colour: #24292f"></td>
+        <td class="info__cell">Bomb</td>
+        <td class="info__cell">-</td>
+        <td class="info__cell">-</td>
+        <td class="info__cell">Explodes destroying a large radius of cells.</td>
+        <td class="info__cell">Can be only placed by the player by left-clicking.</td>
+      </tr>
+      <tr class="info__row">
+        <td class="info__cell info__colour" style="--colour: #a475f9"></td>
+        <td class="info__cell">Virus</td>
+        <td class="info__cell">15</td>
+        <td class="info__cell">-</td>
+        <td class="info__cell">After 15 days.</td>
+        <td class="info__cell">Appears after a poisonous grass is eaten. Kills nonimmune herbivore and wild cells with 80% chance. Otherwise makes them immune to viruses.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- p5.js -->
+  <script src="./assets/js/lib/p5.min.js" defer></script>
+
+  <!-- Utilities -->
+  <script src="./assets/js/utils/random.js" defer></script>
+  <script src="./assets/js/utils/shade.js" defer></script>
+
+  <!-- Game modules -->
+  <script src="./assets/js/modules/Game.js" defer></script>
+  <script src="./assets/js/modules/Cell.js" defer></script>
+  <script src="./assets/js/modules/Animal.js" defer></script>
+  <script src="./assets/js/modules/Grass.js" defer></script>
+  <script src="./assets/js/modules/Virus.js" defer></script>
+  <script src="./assets/js/modules/Herbivore.js" defer></script>
+  <script src="./assets/js/modules/Wild.js" defer></script>
+  <script src="./assets/js/modules/Bomb.js" defer></script>
+
+  <!-- Main script -->
+  <script src="./assets/js/main.js" defer></script>
+</body>
+</html>

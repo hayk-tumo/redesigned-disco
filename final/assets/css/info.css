@@ -1,0 +1,20 @@
+.info {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.info__head-cell {
+  color: var(--text-accent);
+  font-weight: 700;
+  text-align: left;
+}
+
+.info__head-cell,
+.info__cell {
+  padding: 0.5em 1em;
+  border: 1px solid var(--border);
+}
+
+.info__colour {
+  background-color: var(--colour);
+}
