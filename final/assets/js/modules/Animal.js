@@ -1,4 +1,4 @@
-class Animal extends Cell {
+class Animal extends MovingCell {
   constructor(x, y, type, colour) {
     super(x, y, type, colour);
     this.isImmune = false;

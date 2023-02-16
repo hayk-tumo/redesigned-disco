@@ -9,29 +9,6 @@
     this.energy = 7;
   }
 
-  move(matrix) {
-    this.energy -= 2;
-
-    // Create copies of matrix and cells not to mutate the parameters
-    const matrixCopy = [...matrix];
-
-    const emptyCell = random(this.getSurroundingCells(matrixCopy, 'empty'));
-
-    if (emptyCell) {
-      const { x, y } = emptyCell;
-
-      matrixCopy[this.y][this.x] = 'empty';
-      matrixCopy[y][x] = 'wild';
-
-      this.x = x;
-      this.y = y;
-    }
-
-    return { matrix: matrixCopy };
-  }
-
-  // gevorg.h28.y@tumo.org
-
   eat(matrix, herbivores) {
     // Create copies of matrix and cells not to mutate the parameters
     const matrixCopy = [...matrix];
@@ -60,24 +37,6 @@
     }
 
     return { matrix: matrixCopy, herbivores: herbivoresCopy };
-  }
-
-  die(matrix, cells) {
-    // Create copies of matrix and cells not to mutate the parameters
-    const matrixCopy = [...matrix];
-    const cellsCopy = [...cells];
-
-    matrixCopy[this.y][this.x] = 'empty';
-
-    // Remove from the list
-    for (const i in cellsCopy) {
-      if (this.x === cellsCopy[i].x && this.y === cellsCopy[i].y) {
-        cellsCopy.splice(i, 1);
-        break;
-      }
-    }
-
-    return { matrix: matrixCopy, cells: cellsCopy };
   }
 
   reproduce(matrix, cells) {

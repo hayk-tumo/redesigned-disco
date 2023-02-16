@@ -142,7 +142,7 @@ class Game {
         // Herbivore cells
         for (const herbivoreCell of this.herbivoreCells) {
           // Move, lose energy
-          this.matrix = herbivoreCell.move(this.matrix).matrix;
+          this.matrix = herbivoreCell.move(this.matrix, 1).matrix;
 
           if (herbivoreCell.energy <= 0) {
             // The cell is dead
@@ -167,7 +167,7 @@ class Game {
 
         // Virus cells
         for (const virusCell of this.virusCells) {
-          this.matrix = virusCell.move(this.matrix).matrix;
+          this.matrix = virusCell.move(this.matrix, 1).matrix;
 
           if (virusCell.energy <= 0) {
             // The cell is dead
@@ -190,7 +190,7 @@ class Game {
         // Wild cells
         for (const wildCell of this.wildCells) {
           // Move, lose energy
-          this.matrix = wildCell.move(this.matrix).matrix;
+          this.matrix = wildCell.move(this.matrix, 2).matrix;
 
           if (wildCell.energy <= 0) {
             // The cell is dead

@@ -1,33 +1,12 @@
 /**
  * Virus cell. Kills herbivores and wild animals just by touching them. Cannot reproduce and dies
- * after 15 frames of its existance. Appears by 0.5% chance when a grass is eaten by a herbivore.
+ * after 15 frames of its existence. Appears by 0.5% chance when a grass is eaten by a herbivore.
  */
 
- class Virus extends Cell {
+ class Virus extends MovingCell {
   constructor(x, y) {
     super(x, y, 'virus', '#a475f9');
     this.energy = 15;
-  }
-
-  move(matrix) {
-    this.energy--;
-
-    // Create copies of matrix and cells not to mutate the parameters
-    const matrixCopy = [...matrix];
-
-    const emptyCell = random(this.getSurroundingCells(matrixCopy, 'empty'));
-
-    if (emptyCell) {
-      const { x, y } = emptyCell;
-
-      matrixCopy[this.y][this.x] = 'empty';
-      matrixCopy[y][x] = 'virus';
-
-      this.x = x;
-      this.y = y;
-    }
-
-    return { matrix: matrixCopy };
   }
 
   eat(matrix, livingCells) {
@@ -38,7 +17,6 @@
     const livingCell = random(this.getSurroundingCells(matrixCopy, ['herbivore', 'wild']));
 
     if (livingCell) {
-      console.log(livingCell.isImmune)
       const { x, y } = livingCell;
       const kill = Math.random() < 0.8;
 
@@ -72,23 +50,5 @@
     }
 
     return { matrix: matrixCopy, cells: livingCellsCopy };
-  }
-
-  die(matrix, cells) {
-    // Create copies of matrix and cells not to mutate the parameters
-    const matrixCopy = [...matrix];
-    const cellsCopy = [...cells];
-
-    matrixCopy[this.y][this.x] = 'empty';
-
-    // Remove from the list
-    for (const i in cellsCopy) {
-      if (this.x === cellsCopy[i].x && this.y === cellsCopy[i].y) {
-        cellsCopy.splice(i, 1);
-        break;
-      }
-    }
-
-    return { matrix: matrixCopy, cells: cellsCopy };
   }
 }
