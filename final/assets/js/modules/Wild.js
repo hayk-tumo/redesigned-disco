@@ -4,8 +4,8 @@
  */
 
  class Wild extends Animal {
-  constructor(x, y) {
-    super(x, y, 'wild', '#fa4549');
+  constructor(x, y, gender) {
+    super(x, y, 'wild', '#fa4549', gender);
     this.energy = 7;
   }
 
@@ -37,23 +37,5 @@
     }
 
     return { matrix: matrixCopy, herbivores: herbivoresCopy };
-  }
-
-  reproduce(matrix, cells) {
-    // Create copies of matrix and cells not to mutate the parameters
-    const matrixCopy = [...matrix];
-    const cellsCopy = [...cells];
-
-    const emptyCell = random(this.getSurroundingCells(matrixCopy, 'empty'));
-
-    if (emptyCell) {
-      const { x, y } = emptyCell;
-      const newWild = new Wild(x, y);
-
-      cellsCopy.push(newWild);
-      matrixCopy[y][x] = 'wild';
-    }
-
-    return { matrix: matrixCopy, cells: cellsCopy };
   }
 }

@@ -4,8 +4,8 @@
  */
 
 class Herbivore extends Animal {
-  constructor(x, y) {
-    super(x, y, 'herbivore', '#eac54f');
+  constructor(x, y, gender) {
+    super(x, y, 'herbivore', '#eac54f', gender);
     this.energy = 7;
   }
 
@@ -44,23 +44,5 @@ class Herbivore extends Animal {
     }
 
     return { matrix: matrixCopy, grass: grassCopy, virus: virusCopy };
-  }
-
-  reproduce(matrix, cells) {
-    // Create copies of matrix and cells not to mutate the parameters
-    const matrixCopy = [...matrix];
-    const cellsCopy = [...cells];
-
-    const emptyCell = random(this.getSurroundingCells(matrixCopy, 'empty'));
-
-    if (emptyCell) {
-      const { x, y } = emptyCell;
-      const newGrass = new Herbivore(x, y);
-
-      cellsCopy.push(newGrass);
-      matrixCopy[y][x] = 'herbivore';
-    }
-
-    return { matrix: matrixCopy, cells: cellsCopy };
   }
 }

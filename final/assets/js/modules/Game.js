@@ -156,12 +156,14 @@ class Game {
             this.grassCells = updated.grass;
             this.virusCells = updated.virus;
 
-            if (herbivoreCell.energy >= 11) {
-              // Reproduce
+            // if (herbivoreCell.energy >= 11) {
+            // Try to Reproduce
+            {
               const updated = herbivoreCell.reproduce(this.matrix, this.herbivoreCells);
               this.matrix = updated.matrix;
               this.herbivoreCells = updated.cells;
             }
+            // }
           }
         }
 
@@ -203,8 +205,13 @@ class Game {
             this.matrix = updated.matrix;
             this.herbivoreCells = updated.herbivores;
 
-            if (wildCell.energy >= 11) {
-              // Reproduce
+            // if (wildCell.energy >= 11) {
+            //   // Reproduce
+            //   const updated = wildCell.reproduce(this.matrix, this.wildCells);
+            //   this.matrix = updated.matrix;
+            //   this.wildCells = updated.cells;
+            // }
+            {
               const updated = wildCell.reproduce(this.matrix, this.wildCells);
               this.matrix = updated.matrix;
               this.wildCells = updated.cells;
@@ -234,9 +241,9 @@ class Game {
         if (this.matrix[y][x] === 'grass') {
           this.grassCells.push(new Grass(x, y));
         } else if (this.matrix[y][x] === 'herbivore') {
-          this.herbivoreCells.push(new Herbivore(x, y));
+          this.herbivoreCells.push(new Herbivore(x, y, random([true, false])));
         } else if (this.matrix[y][x] === 'wild') {
-          this.wildCells.push(new Wild(x, y));
+          this.wildCells.push(new Wild(x, y, random([true, false])));
         }
       }
     }
